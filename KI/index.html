@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ChatBot</title>
+    <h1>ChatBot</h1>
+    <p>Stelle eine Frage (Fertigstellung 30.3-24.4.23)</p>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+      
+      header {
+        height: 100px;
+        box-shadow: 5px;
+        position: absolute;
+        top: 10px;
+    right: 10px;
+    margin: 0;
+    text-decoration: none;
+    color: white;
+      }
+
+      
+      
+      h1 {
+        font-size: 40px;
+        font-weight: bold;
+        color: #cdbdbd;
+        text-align: center;
+        margin-top: 50px;
+      }
+      
+      p {
+        font-size: 18px;
+        color: #a09292;
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      .settings {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        cursor: pointer;
+        color: #888;
+      }
+      
+      .settings:hover {
+        color: #333;
+      }
+      
+      #chat-window {
+        height: 350px;
+        width: 600px;
+        border: 1px solid #0d0d0d;
+        padding: 10px;
+        overflow-y: scroll;
+        color: #e1d6d6;
+        margin-bottom: 10px;
+        font-size: 22px;
+        background-color: #2d2d2d;
+        border-radius: 5px;
+        font-family: Verdana;
+        
+      }
+      
+      #clear-button {
+        margin-top: 10px;
+        margin-left: 1px;
+        width: 100px;
+        padding: 5px;
+        font-size: 17px;
+        border: 1px solid #4f4646;
+        background-color: #1b1919;
+        color: rgb(243, 10, 10);
+        border-radius: 5px;
+      }
+      
+      button {
+        margin-top: 10px;
+        padding: 5px;
+        font-size: 20px;
+        width: 70;
+        border: 1px solid #574d4d;
+        background-color: #0f0f0f;
+        color: rgb(241, 233, 233);
+        display: inline-block;
+        vertical-align: top;
+        border-radius: 5px;
+      }
+      
+      #user-input {
+        width: 30%;
+        margin-top: 10px;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #6a6060;
+        background-color: #625a5a;
+        color: #01030a;
+        border-radius: 5px;
+      }
+      
+      
+      
+      #chat-window::-webkit-scrollbar {
+        width: 8px;
+      }
+      
+      #chat-window::-webkit-scrollbar-track {
+        background-color: #2d2d2d;
+      }
+      
+      #chat-window::-webkit-scrollbar-thumb {
+        background-color: #7f7f7f;
+        border-radius: 20px;
+      }
+
+ 
+
+
+    
+    </style>
+    
+
+
+
+
+    
+  
+  </head>
+  <body>
+    <div id="chat-window"></div>
+    <input type="text" id="user-input" placeholder="Was möchtest du wissen?">
+    <button onclick="senden()">&#10148;</button>
+    <button id="clear-button">&#128465; clear </button>
+    <div id="messages">
+      
+ 
+
+      <header>
+        <a href="info.html" style="color: white;">⚙</a>
+        <a href="home.html" style="color: white;">Home</a>  
+        <a href="Updates.html" style="color: white;">Updates</a> 
+
+
+      </header>
+      
+
+    
+    
+    
+    
+
+
+    
+    <script>
+
+                              
+      
+
+      
+
+
+
+
+
+
+      const chatWindow = document.getElementById("chat-window");
+      const userInput = document.getElementById("user-input");
+      const clearButton = document.getElementById("clear-button");
+      
+      
+      function clearChat() {
+        chatWindow.innerHTML = "";
+      }
+      
+      
+      clearButton.addEventListener("click", clearChat);
+    
+      function senden() {
+        // Step 2: Capture user's input and display it in the chat window
+        const userInput = document.getElementById("user-input").value;
+        const chatWindow = document.getElementById("chat-window");
+        chatWindow.innerHTML += "User: " + userInput + "<br>";
+
+        
+        
+             // Step 3: Generate a response based on user's input
+        let botResponse;
+        if (userInput.includes("Hallo") || userInput.includes("Hi") || userInput.includes("hallo")) {
+    botResponse = "Hallo! Wie geht es dir?";
+  } else if (userInput.includes("gut") || userInput.includes("sehr gut")) {
+    botResponse = "Das freut mich zu hören!";
+        } else if (userInput.includes("schlecht") || userInput.includes("sehr schlecht")) {
+    botResponse = "Oh nein, das tut mir leid. Kann ich etwas tun, um zu helfen?";
+        } else if (userInput.includes("1x1")) {
+          botResponse = "1x1=1!"; 
+        } else if (userInput.includes("Entwickler") || userInput.includes("wer hat dich programmiert")) {
+          botResponse = "Mich hat MG Studios entwickelt. ";
+        } else if (userInput.includes("Servus") || userInput.includes("servus")) {
+          botResponse = "Servus ist Latein für der Sklave";  
+        } else if (userInput.includes("Kannst du Programmieren") || userInput.includes("kannst du programmieren")) {
+          botResponse = "Leider nicht. Ich befinde mich noch in der entwicklungsfase";
+        } else if (userInput.includes("Moin")) {
+          botResponse = "Moin!"; 
+        }  else if (userInput.includes("essen") || userInput.includes("Was kann ich heute essen")) {
+          botResponse = "Leider bin ich ein Bot und habe keinen Geschmack. Ein Bespiel währe aber Pommes oder Nudeln!";  
+        } else if (userInput.includes("Mathe")) {
+          botResponse = "Noch nicht. Aber einfache multiplikations Aufgaben bis 100 rechnen.";
+        } else if (userInput.includes("Wer hat dich erschaffen?")) {
+          botResponse = "Ich wurde von meinem Entwickler erschaffen.";
+        } else if (userInput.includes("Wie funktionierst du?")) {
+          botResponse = "Ich benutze künstliche Intelligenz, um Fragen zu beantworten.";
+        } else if (userInput.includes("Kannst du Mathematikprobleme lösen?")) {
+          botResponse = "Ja, ich kann Mathematikprobleme bis 10 lösen.";
+        } else if (userInput.includes("Sinn")) {
+          botResponse = "Das ist eine schwierige Frage. Viele Menschen haben unterschiedliche Meinungen dazu.";
+        } else if (userInput.includes("Witz") || userInput.includes("witz")) {
+          botResponse = "Alle Kinder fahren Achterbahn, nur nicht Klaus, der fliegt raus";
+        } else if (userInput.includes("Erde") || userInput.includes("Menschen")) {
+          botResponse = "Es gibt derzeit mehr als 8 Milliarden Menschen auf der Erde.";
+        } else if (userInput.includes("Nachrichten")) {
+          botResponse = "Die aktuellen Nachrichten hängen von deinem Standort und deiner Interessen ab.";
+        } else if (userInput.includes("Wetter")) {
+          botResponse = "Das hängt von deinem Standort ab. Aber ich hoofe schön";
+        }  else if (userInput.includes("alt") || userInput.includes("Alter")) {
+          botResponse = "Ich bin eine künstliche Intelligenz, daher habe ich kein Alter im herkömmlichen Sinne.";
+        } else if (userInput.includes("deutschland") || userInput.includes("Deutschland")) {
+          botResponse = "Deutschland ist ein föderaler Staat in Mitteleuropa und hat 83 Millionen Einwohner. Die Hauptstadt ist Berlin und die Amtssprache ist Deutsch. Deutschland ist bekannt für seine Kultur, Geschichte und Wirtschaftskraft. Es hat eine reiche industrielle Tradition und ist ein wichtiger Akteur in der europäischen Politik. Zu den bekanntesten deutschen Persönlichkeiten zählen Goethe, Beethoven, Bach und Merkel. Die deutsche Gesellschaft ist pluralistisch und liberal, mit einer starken Betonung auf Bildung und sozialer Gerechtigkeit. Das Land ist auch bekannt für seine vielen Festivals, seine Küche und seine Bier- und Weinproduktion. Deutschland ist ein beliebtes Reiseziel und hat eine Vielzahl von Sehenswürdigkeiten wie das Brandenburger Tor, das Schloss Neuschwanstein und den Kölner Dom.";
+        } else if (userInput.includes("Berg") || userInput.includes("Welt") || userInput.includes("Wer ist der höchste Berg")) {
+          botResponse = "Der höchste Berg der Welt ist der Mount Everest.";
+        } else if (userInput.includes("1x1")) {
+          botResponse = "1x1=1";
+        } else if (userInput.includes("1x2")) {
+          botResponse = "1x2=2";
+        } else if (userInput.includes("1x3")) {
+          botResponse = "1x3=3";
+        } else if (userInput.includes("1x4")) {
+          botResponse = "1x4=4";
+        } else if (userInput.includes("1x5")) {
+          botResponse = "1x5=5";
+        } else if (userInput.includes("1x6")) {
+          botResponse = "1x6=6";
+        } else if (userInput.includes("1x7")) {
+          botResponse = "1x7=7";
+        } else if (userInput.includes("1x8")) {
+          botResponse = "1x8=8";
+        } else if (userInput.includes("1x9")) {
+          botResponse = "1x9=9";
+        } else if (userInput.includes("1x10")) {
+          botResponse = "1x10=10";
+        } else if (userInput.includes("1x1")) {
+    botResponse = "Welche Zahl möchtest du multiplizieren?";
+  } else if (userInput.includes("2x")) {
+    let num = userInput.split("2x")[1];
+    botResponse = `2x${num}=${2*num}`;
+  } else if (userInput.includes("3x")) {
+    let num = userInput.split("3x")[1];
+    botResponse = `3x${num}=${3*num}`;
+  } else if (userInput.includes("4x")) {
+    let num = userInput.split("4x")[1];
+    botResponse = `4x${num}=${4*num}`;
+  } else if (userInput.includes("5x")) {
+    let num = userInput.split("5x")[1];
+    botResponse = `5x${num}=${5*num}`;
+  } else if (userInput.includes("6x")) {
+    let num = userInput.split("6x")[1];
+    botResponse = `6x${num}=${6*num}`;
+  } else if (userInput.includes("7x")) {
+    let num = userInput.split("7x")[1];
+    botResponse = `7x${num}=${7*num}`;
+  } else if (userInput.includes("8x")) {
+    let num = userInput.split("8x")[1];
+    botResponse = `8x${num}=${8*num}`;
+  } else if (userInput.includes("9x")) {
+    let num = userInput.split("9x")[1];
+    botResponse = `9x${num}=${9*num}`;
+  } else if (userInput.includes("10x")) {
+    let num = userInput.split("10x")[1];
+    botResponse = `10x${num}=${10*num}`;
+  } else if (userInput.includes("Hilfe")) {
+          botResponse = "Klar, 1. Gucke ob du alles richtig geschrieben hast. 2. Stelle die Frage anders. 3. Vieleicht kann ich diese Frage noch nicht beantworten.";
+        } else if (userInput.includes("11x")) {
+  let num = userInput.split("11x")[1];
+  botResponse = `11x${num}=${11*num}`;
+} else if (userInput.includes("12x")) {
+  let num = userInput.split("12x")[1];
+  botResponse = `12x${num}=${12*num}`;
+} else if (userInput.includes("13x")) {
+  let num = userInput.split("13x")[1];
+  botResponse = `13x${num}=${13*num}`;
+} else if (userInput.includes("14x")) {
+  let num = userInput.split("14x")[1];
+  botResponse = `14x${num}=${14*num}`;
+} else if (userInput.includes("15x")) {
+  let num = userInput.split("15x")[1];
+  botResponse = `15x${num}=${15*num}`;
+} else if (userInput.includes("16x")) {
+  let num = userInput.split("16x")[1];
+  botResponse = `16x${num}=${16*num}`;
+} else if (userInput.includes("17x")) {
+  let num = userInput.split("17x")[1];
+  botResponse = `17x${num}=${17*num}`;
+} else if (userInput.includes("18x")) {
+  let num = userInput.split("18x")[1];
+  botResponse = `18x${num}=${18*num}`;
+} else if (userInput.includes("19x")) {
+  let num = userInput.split("19x")[1];
+  botResponse = `19x${num}=${19*num}`;
+} else if (userInput.includes("20x")) {
+  let num = userInput.split("20x")[1];
+  botResponse = `20x${num}=${20*num}`;
+} else if (userInput.includes("Ja")) {
+  botResponse = "Was kann ich für dich tun";
+} else if (userInput.includes("Mutter")) {
+          botResponse = "Meine Mutter ist eine Ente ";
+        } else if (userInput.includes("Tschüs")) {
+          botResponse = "Bye, Bye";
+        } else if (userInput.includes("Merkel")) {
+          botResponse = "Angela Merkel ist eine deutsche Politikerin und war von 2005 bis 2021 Bundeskanzlerin der Bundesrepublik Deutschland. Sie ist Mitglied der CDU (Christlich Demokratische Union) und war die erste Frau in der Geschichte Deutschlands, die das Amt des Bundeskanzlers innehatte. Merkel hat in ihrer Amtszeit eine Vielzahl von politischen Entscheidungen getroffen und wurde für ihre Rolle in der Europäischen Union und im Umgang mit der Flüchtlingskrise bekannt.";
+        } else if (userInput.includes("Name")) {
+          botResponse = "Mein Name ist ChatBot";
+        } else if (userInput.includes("Julius") || userInput.includes("julius") || userInput.includes("Wer ist der höchste Berg")) {
+          botResponse = "Julius ist ein Name";
+          } else if (userInput.includes("danke") || userInput.includes("Danke")) {
+    botResponse = "Kein Problem, gerne wieder!";
+    } else if (userInput.includes("danke") || userInput.includes("Danke")) {
+    botResponse = "Kein Problem, gerne wieder!";
+    } else if (userInput.includes("Film") || userInput.includes("Welcher Film ist am besten")) {
+  botResponse = "Das hängt von Ihren persönlichen Vorlieben ab. Actionfilme, Komödien und Dramen sind jedoch sehr beliebt.";
+  } else if (userInput.includes("Wetter") || userInput.includes("Wie wird das Wetter heute")) {
+  botResponse = "Schauen Sie am besten auf einer Wetter-Website nach, um genaue Informationen zu erhalten.";
+  } else if (userInput.includes("Sport") || userInput.includes("beliebt")) {
+  botResponse = "Der beliebtesze Sport ist Fußball.";
+  } else if (userInput.includes("deine Lieblingsfarbe") || userInput.includes("Farbe")) {
+  botResponse = "Als Bot habe ich keine Lieblingsfarbe. Jedoch ist die  beliebteste Farbe der Welt Blau";
+  } else if (userInput.includes("Goethe")) {
+          botResponse = "Johann Wolfgang von Goethe (1749-1832) war einer der bedeutendsten deutschen Dichter, Schriftsteller und Gelehrten der Weimarer Klassik. Er schuf Werke wie Faust, Die Leiden des jungen Werthers und Wilhelm Meisters Lehrjahre. Goethe war auch ein wichtiger Naturforscher und prägte die deutsche Sprache maßgeblich. Er war politisch aktiv und hatte Einfluss auf die deutsche Kultur seiner Zeit. Goethes Werk wird als Höhepunkt der deutschen Literatur angesehen und hat bis heute großen Einfluss auf die Kunst und Wissenschaft. Seine Persönlichkeit und sein Werk werden oft als widersprüchlich und vielschichtig beschrieben, und sein Einfluss auf die europäische Kultur kann nicht hoch genug eingeschätzt werden.";
+          } else if (userInput.includes("England") || userInput.includes("Vereinigtes Königreich")) {
+    botResponse = "England, das größte Land im Vereinigten Königreich, hat eine lange und reiche Geschichte. Von den grünen Hügeln von Cornwall bis zu den schroffen Klippen von Schottland hat das Land viel zu bieten. England ist bekannt für seine Kultur, Kunst, Architektur, Musik und Literatur. Die Hauptstadt London ist ein Schmelztiegel aus Geschichte und Moderne und bietet einige der weltweit bekanntesten Sehenswürdigkeiten wie den Big Ben, den Tower of London und den Buckingham Palace. Engländer sind bekannt für ihre Liebe zum Tee und Fußball, und das Land hat eine reiche kulinarische Tradition mit Gerichten wie Fish and Chips und Sunday Roast.";
+  } else if (userInput.includes("Planeten") || userInput.includes("Sonnensystem")) {
+    botResponse = "Es gibt acht Planeten in unserem Sonnensystem: Merkur, Venus, Erde, Mars, Jupiter, Saturn, Uranus und Neptun";
+  } else if (userInput.includes("Studios") || userInput.includes("studios")) {
+    botResponse = "leider kann es vorkommen, das der Bot in seltenen fellen eine Falsche antwort gibt. Wir werden Versuchen das Problem so schnell wie es geht zu beheben";
+  } else if (userInput.includes("beleidigen") || userInput.includes("beleidigt")) {
+    botResponse = "Das tut mir leid. Wenn du mehr informationen erhalten willst, dann tipp bitte °Studios° ein. ";
+  } else if (userInput.includes("Gebäude") || userInput.includes("höchste")) {
+    botResponse = "Der Burj Khalifa ist ein Wolkenkratzer in Dubai und mit einer Höhe von 828 Metern das höchste Gebäude der Welt. Der Bau des Gebäudes begann 2004 und wurde im Januar 2010 abgeschlossen. Das Design des Burj Khalifa wurde von Adrian Smith, einem amerikanischen Architekten, entworfen und ist Teil eines Entwicklungsprojekts namens Downtown Dubai. Das Gebäude beherbergt Büros, Wohnungen, Hotels und Restaurants und hat insgesamt 163 Stockwerke. Es verfügt auch über das höchste Aussichtsdeck der Welt, das Besuchern einen atemberaubenden Blick auf die Stadt bietet. Der Burj Khalifa ist ein Symbol für Dubais Wachstum und Wohlstand.";
+  } else if (userInput.includes("Buch") || userInput.includes("empfehlen")) {
+    botResponse = "Das hängt von ihren interressen ab. Schauen sie doch bei einem Buchhändler vorbei.";
+  } else if (userInput.includes("Menschen") || userInput.includes("Mensch")) {
+    botResponse = "Menschen sind die intelligenteste und dominanteste Spezies auf der Erde. Sie gehören zur Gattung Homo und sind durch ihre einzigartigen Merkmale wie Sprache, Kultur, Technologie und kognitive Fähigkeiten gekennzeichnet. Menschen leben in verschiedenen Gesellschaften und haben sich über Jahrtausende entwickelt, wobei sie sich an unterschiedliche Umgebungen und Bedingungen angepasst haben. Sie haben bedeutende Fortschritte in Wissenschaft, Kunst, Literatur und Philosophie gemacht und sind auch in der Lage, andere Arten zu schützen oder auszulöschen. Trotz ihrer Errungenschaften haben Menschen auch Herausforderungen wie Armut, Krankheiten, Konflikte und Klimawandel zu bewältigen, die die Zukunft ihrer Existenz auf der Erde bedrohen können.";
+  } else if (userInput.includes("dir") || userInput.includes("und dir")) {
+    botResponse = "Gut. Kann ich etwas für dich tun?";
+  } else if (userInput.includes("Zweck") || userInput.includes("kannst")) {
+    botResponse = "Ich helfe bei bei entscheidungen und Problemen!";
+  } else if (userInput.includes("E-Akte") || userInput.includes("e-Akte")) {
+    botResponse = "Die E-Akte ist eine digitale Akte, die im Jobcenter genutzt wird, um die Verwaltung von Unterlagen und Anträgen zu vereinfachen. Dabei werden alle relevanten Dokumente und Informationen in elektronischer Form gespeichert und können schnell abgerufen werden. Die E-Akte soll den Austausch von Informationen zwischen den verschiedenen Abteilungen im Jobcenter erleichtern und die Bearbeitungszeiten von Anträgen verkürzen. Zudem soll die E-Akte die Sicherheit und den Datenschutz der Informationen gewährleisten. Die Einführung der E-Akte hat in vielen Jobcentern zu einer Umstellung der Arbeitsabläufe geführt und erfordert von den Mitarbeitern eine entsprechende Schulung im Umgang mit der digitalen Akte.";
+  } else if (userInput.includes("Aida") || userInput.includes("aida")) {
+    botResponse = "Die AIDA-Methode ist ein Instrument zur effektiven Gesprächsführung im Verkauf. Sie steht für Attention, Interest, Desire und Action und beschreibt die Schritte, die notwendig sind, um den Kunden zu überzeugen. Zunächst soll die Aufmerksamkeit des Kunden geweckt werden, danach wird sein Interesse geweckt, gefolgt von dem Wunsch, das Produkt zu besitzen. Abschließend wird eine Handlungsaufforderung gegeben. Diese Methode kann auch im Jobcenter eingesetzt werden, um den Kunden zu unterstützen und ihm bei der Jobsuche zu helfen. Durch gezielte Fragen und eine empathische Gesprächsführung können die Bedürfnisse des Kunden ermittelt und passende Angebote gemacht werden.";
+  } else if (userInput.includes("Jobcenter") || userInput.includes("Job-Center")) {
+    botResponse = "WSDebfjHVUVwbeifhvdVIHVezhe KAFKA Drog bei Hilf    u. ad";
+  } else if (userInput.includes("Zweck") || userInput.includes("kannst")) {
+    botResponse = "Ich helfe bei  entscheidungen und Problemen!";
+  } else if (userInput.includes("Tiere") || userInput.includes("tiere")) {
+    botResponse = "Tiere sind Lebewesen, die in der Natur vorkommen und eine große Vielfalt aufweisen. Zu den bekanntesten Tieren gehören Säugetiere wie Hunde, Katzen, Affen, Wale und Elefanten, Vögel wie Papageien, Falken und Eulen, sowie Reptilien wie Schlangen und Krokodile. Auch Insekten wie Bienen, Ameisen und Schmetterlinge und Fische wie Haie und Delfine sind Teil des Tierreichs. Tiere haben unterschiedliche Eigenschaften und Fähigkeiten, die ihnen helfen, in ihrer Umgebung zu überleben. Viele Tiere haben auch eine wichtige Rolle im Ökosystem und sind daher von großer Bedeutung für die Umwelt und den Menschen.";
+  } else if (userInput.includes("Drucker") || userInput.includes("funktioniert")) {
+    botResponse = "Die genaue Bedienung des Kopierers hängt von dem Modell ab, das in Ihrem Büro verwendet wird. In der Regel befindet sich jedoch eine Bedienungsanleitung in der Nähe des Kopierers oder auf der Website des Herstellers. ";
+  } else if (userInput.includes("heißt") || userInput.includes("wie heißt du")) {
+    botResponse = "Ich heiße ChatBot. Kann ich dir behilflich sein?";
+  } else if (userInput.includes("Musik") || userInput.includes("Instrument")) {
+    botResponse = "Vivaldi, Bach etc.";
+  } else if (userInput.includes("Fortnite") || userInput.includes("fortnite")) {
+    botResponse = "Fortnite ist ein von Epic Games entwickeltes Battle-Royale-Spiel, das 100 Spieler auf einer Insel gegeneinander antreten lässt, um der letzte Überlebende zu sein. Es bietet auch andere Spielmodi, wie Rette die Welt, Kreativmodus und Party Royale. Es ist bekannt für seine bunte Grafik, kosmetischen Gegenstände, Skins und Tänze, die in der Gaming-Community sehr beliebt sind. Fortnite hat auch zahlreiche Kollaborationen mit anderen Franchise-Unternehmen wie Marvel, DC Comics und Star Wars durchgeführt, um das Spielerlebnis noch aufregender zu gestalten.";
+  } else if (userInput.includes("Elizabeth ") || userInput.includes("Queen")) {
+    botResponse = "Während ihrer Amtszeit hat die Königin viele Veränderungen erlebt, darunter den Aufstieg des Fernsehens, den Fall der Berliner Mauer und die Entwicklungen in der Technologie. Trotz dieser Veränderungen hat sie sich stets an die Traditionen und Protokolle gehalten, die mit ihrer Position als Königin einhergehen.";
+  } else if (userInput.includes("Elizabeth ") || userInput.includes("Queen")) {
+    botResponse = "Während ihrer Amtszeit hat die Königin viele Veränderungen erlebt, darunter den Aufstieg des Fernsehens, den Fall der Berliner Mauer und die Entwicklungen in der Technologie. Trotz dieser Veränderungen hat sie sich stets an die Traditionen und Protokolle gehalten, die mit ihrer Position als Königin einhergehen.";
+  } else if (userInput.includes("nein") || userInput.includes("Nein")) {
+    botResponse = "Ok. Du hast natürlich recht";
+  } else if (userInput.includes("Mathe") || userInput.includes("Matte")) {
+    botResponse =   "Ich kann das kleine 1x1.";
+  } else if (userInput.includes("Dokumente") || userInput.includes("Antrag")) {
+    botResponse =   "Die Dokumente, die Sie für einen Antrag benötigen, hängen von der Art des Antrags ab. In der Regel benötigen Sie jedoch einen Identitätsnachweis wie z.B. einen Personalausweis oder Reisepass, Nachweise über Ihr Einkommen und gegebenenfalls auch Nachweise über Ihre Wohnsituation. Es kann jedoch je nach Antrag und Land Unterschiede geben. Es ist am besten, sich direkt bei der zuständigen Stelle zu erkundigen oder auf deren Webseite nachzusehen.";
+  } else if (userInput.includes("Tanzen") || userInput.includes("tanzen")) {
+    botResponse = "Ja, ich kann Tanzen 💃🕺🩰";
+  } else if (userInput.includes("Roboter") || userInput.includes("roboter")) {
+    botResponse = "Ich bin eine KI und daher ein Roboter. Ich kann helfen fragen zu beantworten";
+  } else if (userInput.includes("Geschichte") || userInput.includes("geschochte")) {
+    botResponse = "Es war einmal ein kleiner Vogel, der sich in den Wintermonaten allein fühlte. Eines Tages fand er eine Gruppe von Vögeln und wurde herzlich aufgenommen. Er flog mit ihnen in den Süden, wo er endlich Freunde fand und nie wieder einsam sein musste. Ende.";
+  } else if (userInput.includes("Ziel") || userInput.includes("ziel")) {
+    botResponse = "Als KI-basierte Sprachmodell ist mein Ziel, den Nutzern durch die Bereitstellung von Antworten auf ihre Fragen und Probleme zu helfen. Ich bin darauf trainiert, menschenähnliche Antworten auf eine Vielzahl von Themen zu geben und dabei ständig zu lernen und meine Fähigkeiten zu verbessern. Meine Schöpfer hoffen, dass ich dabei helfen kann, die Kommunikation zwischen Menschen und Maschinen zu verbessern und die Effizienz in verschiedenen Bereichen zu steigern.";
+  } else if (userInput.includes("wow") || userInput.includes("WOW")) {
+    botResponse = "Danke. Wobei kann ich dir helfen?";
+  } else if (userInput.includes("Falsch") || userInput.includes("falsch")) {
+    botResponse = "Das tut mir sehr leid";
+  } else if (userInput.includes("bist du") || userInput.includes("Wer")) {
+    botResponse = "Ich bin ChatBot";
+  } else if (userInput.includes("objekt") || userInput.includes("Objekt")) {
+    botResponse = "In der Grammatik bezieht sich das Objekt auf den Teil eines Satzes, auf den sich das Verb bezieht oder auf den das Verb angewendet wird. Es gibt zwei Arten von Objekten: direkte und indirekte Objekte.";
+  } else if (userInput.includes("Subjekt") || userInput.includes("subjekt")) {
+    botResponse = "In der Grammatik bezieht sich das Subjekt auf den Teil eines Satzes, der das Substantiv oder Pronomen ist, das die Handlung ausführt oder über das etwas ausgesagt wird. Es steht normalerweise am Anfang des Satzes oder in der Nähe des Verbs. Das Subjekt antwortet normalerweise auf die Frage Wer oder was? in Bezug auf das Verb.";
+  } else if (userInput.includes("Konjunktion") || userInput.includes("konjunktion")) {
+    botResponse = "In der Grammatik ist eine Konjunktion ein Wort oder eine Gruppe von Wörtern, die verwendet werden, um Wörter, Phrasen oder Sätze zu verbinden. Konjunktionen können verwendet werden, um eine Verbindung zwischen ähnlichen oder gegensätzlichen Ideen herzustellen und verschiedene Teile eines Satzes miteinander zu verknüpfen.";
+  } else if (userInput.includes("Prädikat") || userInput.includes("prädikat")) {
+    botResponse = "In der Grammatik bezieht sich das Prädikat auf den Teil eines Satzes, der das Verb und alle damit verbundenen Elemente enthält, die das Verb näher beschreiben oder modifizieren. Es ist der Teil des Satzes, der die Handlung ausführt, die Zustandsbeschreibung oder das Ereignis darstellt, über das etwas ausgesagt wird.";
+  } else if (userInput.includes("Verb") || userInput.includes("Verb")) {
+    botResponse = "Ein Verb ist ein Wort in der Grammatik, das eine Handlung, eine Aktivität, einen Zustand oder einen Vorgang ausdrückt. Es ist ein zentrales Element in Sätzen und bildet normalerweise das Prädikat, das den Kern der Aussage darstellt. Verben zeigen oft an, was das Subjekt tut, wie es etwas tut, wann es etwas tut oder in welchem Zustand es sich befindet.";
+  } else if (userInput.includes("gefährlich") || userInput.includes("gefehrlich")) {
+    botResponse = "Nein, ich bin nicht gefährlich. Ich bin eine KI die darauf trainirt wurde, nett zu sein und die passende Antwort zu liefern.";
+  } else if (userInput.includes("Bestimmungen") || userInput.includes("Bestimmung")) {
+    botResponse = "Adverbiale Bestimmungen sind Wörter, Wortgruppen oder Satzteile, die die Umstände oder Bedingungen angeben, unter denen eine Handlung oder ein Ereignis stattfindet. Adverbiale Bestimmungen können Angaben machen über: Zeit, Ort, Art u. Weise, Grund, Zweck, Bedingung";
+  } else if (userInput.includes("spanien") || userInput.includes("Spanien")) {
+    botResponse = "47,42 Millionen (2021)";
+  
+
+
+
+
+
+        } else {
+          botResponse = "Entschuldigung, dass habe ich nicht verstanden. Gebe Hilfe ein um Hilfe zu erhalten.";
+        }
+  
+        // Step 4: Display the response in the chat window
+        chatWindow.innerHTML += "Bot: " + botResponse + "<br>";
+
+        
+      }
+
+
+
+
+
+      
+    </script>
+
+
+
+
+    <script>
+
+
+      
+    </script>
+    
+  </body>
+</html>
+
